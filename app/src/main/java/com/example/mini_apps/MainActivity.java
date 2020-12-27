@@ -26,7 +26,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initData() {
         homeBlankFragment = new HomeBlankFragment();
-        childBlankFragment = new ChildBlankFragment();
+//        childBlankFragment = new ChildBlankFragment();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.add(R.id.bnt_ll, homeBlankFragment)
                 .show(homeBlankFragment)
@@ -47,16 +47,16 @@ public class MainActivity extends BaseActivity {
                         fragmentTransaction.show(homeBlankFragment).hide(childBlankFragment).commit();
                         break;
                     case R.id.rb2:
-                        fragmentTransaction.show(childBlankFragment).hide(homeBlankFragment).commit();
+//                        fragmentTransaction.show(childBlankFragment).hide(homeBlankFragment).commit();
                         break;
                     case R.id.rb3:
-                        fragmentTransaction.show(childBlankFragment).hide(homeBlankFragment).commit();
+//                        fragmentTransaction.show(childBlankFragment).hide(homeBlankFragment).commit();
                         break;
                     case R.id.rb4:
-                        fragmentTransaction.show(childBlankFragment).hide(homeBlankFragment).commit();
+//                        fragmentTransaction.show(childBlankFragment).hide(homeBlankFragment).commit();
                         break;
                     case R.id.rb5:
-                        fragmentTransaction.show(childBlankFragment).hide(homeBlankFragment).commit();
+//                        fragmentTransaction.show(childBlankFragment).hide(homeBlankFragment).commit();
                         break;
                 }
             }
