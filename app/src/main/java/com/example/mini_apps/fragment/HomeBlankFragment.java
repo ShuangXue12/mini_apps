@@ -68,6 +68,8 @@ public class HomeBlankFragment extends BaseFragment<ImPresenter> implements ImCo
     private ColumnLayoutHelper columnLayoutHelper;
     private ArrayList<JavaBean.DataDTO.TopicListDTO> topicListDTOS;
     private LinearLayoutAdapter linearLayoutAdapter;
+    private LinearLayoutHelper linearLayoutHelper1;
+    private ArrayList<JavaBean.DataDTO.CategoryListDTO> categoryListDTOS;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -145,6 +147,10 @@ public class HomeBlankFragment extends BaseFragment<ImPresenter> implements ImCo
         topicListDTOS = new ArrayList<>();
         linearLayoutAdapter = new LinearLayoutAdapter(getActivity(),linearLayoutHelper,topicListDTOS);
 
+        linearLayoutHelper1 = new LinearLayoutHelper();
+        categoryListDTOS = new ArrayList<>();
+        new LinearsLayoutAdapter();
+
 
         DelegateAdapter delegateAdapter = new DelegateAdapter(virtualLayoutManager);
         delegateAdapter.addAdapter(edSingleAdapter);
@@ -157,6 +163,7 @@ public class HomeBlankFragment extends BaseFragment<ImPresenter> implements ImCo
         delegateAdapter.addAdapter(mainSingleAdapter3);
         delegateAdapter.addAdapter(mainLinearAdapter);
         delegateAdapter.addAdapter(mainSingleAdapter4);
+        delegateAdapter.addAdapter(linearLayoutAdapter);
 
         mRecycler.setLayoutManager(virtualLayoutManager);
         mRecycler.setAdapter(delegateAdapter);
@@ -179,17 +186,30 @@ public class HomeBlankFragment extends BaseFragment<ImPresenter> implements ImCo
         bannerDTOS.addAll(banner);
         bannerSindleAdapter.notifyDataSetChanged();
 
+        //5个小图标
         List<JavaBean.DataDTO.ChannelDTO> channel = i.getData().getChannel();
         channelDTOS.addAll(channel);
         gridAdapter.notifyDataSetChanged();
 
+        //品牌制造商直供
         List<JavaBean.DataDTO.BrandListDTO> brandList = i.getData().getBrandList();
         brandListDTOS.addAll(brandList);
         mainGridAdapter2.notifyDataSetChanged();
 
+        //周一周四，新品首发
+        List<JavaBean.DataDTO.NewGoodsListDTO> newGoodsList = i.getData().getNewGoodsList();
+        newGoodsListDTOS.addAll(newGoodsList);
+        mainGridAdapter2.notifyDataSetChanged();
+
+        //人气推荐
         List<JavaBean.DataDTO.HotGoodsListDTO> hotGoodsList = i.getData().getHotGoodsList();
         hotGoodsListDTOS.addAll(hotGoodsList);
         mainLinearAdapter.notifyDataSetChanged();
+
+        //专业精选
+        List<JavaBean.DataDTO.TopicListDTO> topicList = i.getData().getTopicList();
+        topicListDTOS.addAll(topicList);
+        linearLayoutAdapter.notifyDataSetChanged();
 
     }
 

@@ -37,8 +37,8 @@ public class MainSingleAdapter4 extends DelegateAdapter.Adapter {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        ZyViewHolder zyViewHolder = (ZyViewHolder) holder;
-        zyViewHolder.tvName.setText("专题精选");
+//        ZyViewHolder zyViewHolder = (ZyViewHolder) holder;
+//        zyViewHolder.tvName.setText("专题精选");
     }
 
     @Override

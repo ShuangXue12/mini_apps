@@ -31,7 +31,7 @@ public class MainSingleAdapter3 extends DelegateAdapter.Adapter {
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View inflate = LayoutInflater.from(context).inflate(R.layout.sl1_item, parent, false);
+        View inflate = LayoutInflater.from(context).inflate(R.layout.sl2_item, parent, false);
         return new ImViewHolder(inflate);
     }
 
