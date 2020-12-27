@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.alibaba.android.vlayout.DelegateAdapter;
 import com.alibaba.android.vlayout.LayoutHelper;
 import com.alibaba.android.vlayout.layout.GridLayoutHelper;
-import com.alibaba.android.vlayout.layout.SingleLayoutHelper;
 import com.bumptech.glide.Glide;
 import com.example.mini_apps.R;
 import com.example.mini_apps.bean.JavaBean;
@@ -47,7 +46,7 @@ public class GridAdapter extends DelegateAdapter.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         JavaBean.DataDTO.ChannelDTO channelDTO = list.get(position);
         GridViewHolder gridViewHolder = (GridViewHolder) holder;
-        Glide.with(context).load(channelDTO.getUrl()).into(gridViewHolder.image);
+        Glide.with(context).load(channelDTO.getIcon_url()).into(gridViewHolder.image);
         gridViewHolder.tvname.setText(channelDTO.getName());
     }
 

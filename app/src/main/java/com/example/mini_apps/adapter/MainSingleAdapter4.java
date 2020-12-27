@@ -14,11 +14,11 @@ import com.alibaba.android.vlayout.LayoutHelper;
 import com.alibaba.android.vlayout.layout.SingleLayoutHelper;
 import com.example.mini_apps.R;
 
-public class MainSingleAdapter2 extends DelegateAdapter.Adapter {
+public class MainSingleAdapter4 extends DelegateAdapter.Adapter {
     private Context context;
     private SingleLayoutHelper singleLayoutHelper;
 
-    public MainSingleAdapter2(Context context, SingleLayoutHelper singleLayoutHelper) {
+    public MainSingleAdapter4(Context context, SingleLayoutHelper singleLayoutHelper) {
         this.context = context;
         this.singleLayoutHelper = singleLayoutHelper;
     }
@@ -31,14 +31,14 @@ public class MainSingleAdapter2 extends DelegateAdapter.Adapter {
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View inflate = LayoutInflater.from(context).inflate(R.layout.sl1_item, parent, false);
-        return new ImViewHolder(inflate);
+        View inflate = LayoutInflater.from(context).inflate(R.layout.s2_item, parent, false);
+        return new ZyViewHolder(inflate);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-//        ImViewHolder imViewHolder = (ImViewHolder) holder;
-//        imViewHolder.textView.setText("周一周四，新品首发");
+        ZyViewHolder zyViewHolder = (ZyViewHolder) holder;
+        zyViewHolder.tvName.setText("专题精选");
     }
 
     @Override
@@ -46,12 +46,12 @@ public class MainSingleAdapter2 extends DelegateAdapter.Adapter {
         return 1;
     }
 
-    private class ImViewHolder extends RecyclerView.ViewHolder {
-        TextView textView;
+    private class ZyViewHolder extends RecyclerView.ViewHolder {
+        TextView tvName;
 
-        public ImViewHolder(View inflate) {
+        public ZyViewHolder(View inflate) {
             super(inflate);
-            textView = inflate.findViewById(R.id.tv_title1);
+            tvName = inflate.findViewById(R.id.tv_name);
         }
     }
 }

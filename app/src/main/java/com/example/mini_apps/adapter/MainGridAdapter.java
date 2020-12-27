@@ -46,9 +46,9 @@ public class MainGridAdapter extends DelegateAdapter.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         JavaBean.DataDTO.BrandListDTO brandListDTO = list.get(position);
         GrViewHolder grViewHolder = (GrViewHolder) holder;
-        Glide.with(context).load(brandListDTO.getPic_url()).into(grViewHolder.image);
         grViewHolder.tvName.setText(brandListDTO.getName());
-        grViewHolder.tvDesc.setText(brandListDTO.getFloor_price()+"元起");
+        grViewHolder.tvDesc.setText(brandListDTO.getFloor_price() + "元起");
+        Glide.with(context).load(brandListDTO.getNew_pic_url()).into(grViewHolder.image);
     }
 
     @Override
@@ -60,11 +60,12 @@ public class MainGridAdapter extends DelegateAdapter.Adapter {
         ImageView image;
         TextView tvName;
         TextView tvDesc;
+
         public GrViewHolder(View inflate) {
             super(inflate);
-            image=inflate.findViewById(R.id.image_view);
-            tvName=inflate.findViewById(R.id.tv_name_text);
-            tvDesc=inflate.findViewById(R.id.tv_desc);
+            image = inflate.findViewById(R.id.image_view);
+            tvName = inflate.findViewById(R.id.tv_name_text);
+            tvDesc = inflate.findViewById(R.id.tv_desc);
         }
     }
 }

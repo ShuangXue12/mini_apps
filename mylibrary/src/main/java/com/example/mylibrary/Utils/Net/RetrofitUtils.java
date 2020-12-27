@@ -65,8 +65,6 @@ public class RetrofitUtils implements WorkIntefac {
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
-
-
                     }
 
                     @Override

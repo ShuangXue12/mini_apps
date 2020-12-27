@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 
 import com.alibaba.android.vlayout.DelegateAdapter;
 import com.alibaba.android.vlayout.VirtualLayoutManager;
+import com.alibaba.android.vlayout.layout.ColumnLayoutHelper;
 import com.alibaba.android.vlayout.layout.GridLayoutHelper;
 import com.alibaba.android.vlayout.layout.LinearLayoutHelper;
 import com.alibaba.android.vlayout.layout.SingleLayoutHelper;
@@ -19,12 +20,14 @@ import com.example.mini_apps.R;
 import com.example.mini_apps.adapter.BannerSindleAdapter;
 import com.example.mini_apps.adapter.EdSingleAdapter;
 import com.example.mini_apps.adapter.GridAdapter;
+import com.example.mini_apps.adapter.LinearLayoutAdapter;
 import com.example.mini_apps.adapter.MainGridAdapter;
 import com.example.mini_apps.adapter.MainGridAdapter2;
 import com.example.mini_apps.adapter.MainLinearAdapter;
 import com.example.mini_apps.adapter.MainSingleAdapter;
 import com.example.mini_apps.adapter.MainSingleAdapter2;
 import com.example.mini_apps.adapter.MainSingleAdapter3;
+import com.example.mini_apps.adapter.MainSingleAdapter4;
 import com.example.mini_apps.bean.JavaBean;
 import com.example.mini_apps.contract.ImContract;
 import com.example.mini_apps.presenter.ImPresenter;
@@ -32,12 +35,6 @@ import com.example.mylibrary.base.BaseFragment;
 
 import java.util.ArrayList;
 import java.util.List;
-
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link HomeBlankFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 
 public class HomeBlankFragment extends BaseFragment<ImPresenter> implements ImContract.View {
 
@@ -64,28 +61,13 @@ public class HomeBlankFragment extends BaseFragment<ImPresenter> implements ImCo
     private MainSingleAdapter3 mainSingleAdapter3;
     private ArrayList<JavaBean.DataDTO.HotGoodsListDTO> hotGoodsListDTOS;
     private MainLinearAdapter mainLinearAdapter;
-
-    public HomeBlankFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment HomeBlankFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static HomeBlankFragment newInstance(String param1, String param2) {
-        HomeBlankFragment fragment = new HomeBlankFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    private EdSingleAdapter edSingleAdapter;
+    private MainSingleAdapter4 mainSingleAdapter4;
+    private LinearLayoutHelper linearLayoutHelper;
+    private GridLayoutHelper gridLayoutHelper3;
+    private ColumnLayoutHelper columnLayoutHelper;
+    private ArrayList<JavaBean.DataDTO.TopicListDTO> topicListDTOS;
+    private LinearLayoutAdapter linearLayoutAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -111,7 +93,7 @@ public class HomeBlankFragment extends BaseFragment<ImPresenter> implements ImCo
 
         recycledViewPool.setMaxRecycledViews(0,10);
         SingleLayoutHelper singleLayoutHelper = new SingleLayoutHelper();
-        EdSingleAdapter edSingleAdapter = new EdSingleAdapter(getActivity(),singleLayoutHelper);
+        edSingleAdapter = new EdSingleAdapter(getActivity(),singleLayoutHelper);
 
         //轮播图
         bannerDTOS = new ArrayList<>();
@@ -130,6 +112,10 @@ public class HomeBlankFragment extends BaseFragment<ImPresenter> implements ImCo
 
         brandListDTOS = new ArrayList<>();
         GridLayoutHelper gridLayoutHelper1 = new GridLayoutHelper(2);
+//        gridLayoutHelper1.setWeights(new float[]{50,50});
+//        gridLayoutHelper1.setItemCount(2);
+        gridLayoutHelper1.setSpanCount(2);
+//        gridLayoutHelper1.setAutoExpand(true);
         mainGridAdapter = new MainGridAdapter(getActivity(),gridLayoutHelper1,brandListDTOS);
 
         //周一周四，新品首发
@@ -138,6 +124,7 @@ public class HomeBlankFragment extends BaseFragment<ImPresenter> implements ImCo
 
         newGoodsListDTOS = new ArrayList<>();
         GridLayoutHelper gridLayoutHelper2 = new GridLayoutHelper(2);
+        gridLayoutHelper2.setSpanCount(2);
         mainGridAdapter2 = new MainGridAdapter2(getActivity(),newGoodsListDTOS,gridLayoutHelper2);
 
         //人气推荐
@@ -147,6 +134,16 @@ public class HomeBlankFragment extends BaseFragment<ImPresenter> implements ImCo
         hotGoodsListDTOS = new ArrayList<>();
         LinearLayoutHelper linearLayoutHelper = new LinearLayoutHelper();
         mainLinearAdapter = new MainLinearAdapter(getActivity(),hotGoodsListDTOS,linearLayoutHelper);
+
+        //专题精选
+        SingleLayoutHelper singleLayoutHelper5 = new SingleLayoutHelper();
+        mainSingleAdapter4 = new MainSingleAdapter4(getActivity(),singleLayoutHelper5);
+
+        linearLayoutHelper = new LinearLayoutHelper();
+        gridLayoutHelper3 = new GridLayoutHelper(3);
+        columnLayoutHelper = new ColumnLayoutHelper();
+        topicListDTOS = new ArrayList<>();
+        linearLayoutAdapter = new LinearLayoutAdapter(getActivity(),linearLayoutHelper,topicListDTOS);
 
 
         DelegateAdapter delegateAdapter = new DelegateAdapter(virtualLayoutManager);
@@ -159,6 +156,7 @@ public class HomeBlankFragment extends BaseFragment<ImPresenter> implements ImCo
         delegateAdapter.addAdapter(mainGridAdapter2);
         delegateAdapter.addAdapter(mainSingleAdapter3);
         delegateAdapter.addAdapter(mainLinearAdapter);
+        delegateAdapter.addAdapter(mainSingleAdapter4);
 
         mRecycler.setLayoutManager(virtualLayoutManager);
         mRecycler.setAdapter(delegateAdapter);

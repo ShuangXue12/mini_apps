@@ -54,7 +54,7 @@ public class MainGridAdapter2 extends DelegateAdapter.Adapter {
 
     @Override
     public int getItemCount() {
-        return 2;
+        return list.size();
     }
 
     private class YiViewHolder extends RecyclerView.ViewHolder {

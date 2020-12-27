@@ -37,8 +37,8 @@ public class MainSingleAdapter extends DelegateAdapter.Adapter {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        SingViewHolder singViewHolder = (SingViewHolder) holder;
-        singViewHolder.textView.setText("品牌制造商直供");
+//        SingViewHolder singViewHolder = (SingViewHolder) holder;
+//        singViewHolder.textView.setText("品牌制造商直供");
     }
 
     @Override
