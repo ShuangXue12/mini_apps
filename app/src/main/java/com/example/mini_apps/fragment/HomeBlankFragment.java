@@ -21,6 +21,7 @@ import com.example.mini_apps.adapter.BannerSindleAdapter;
 import com.example.mini_apps.adapter.EdSingleAdapter;
 import com.example.mini_apps.adapter.GridAdapter;
 import com.example.mini_apps.adapter.LinearLayoutAdapter;
+import com.example.mini_apps.adapter.LinearsLayoutAdapter;
 import com.example.mini_apps.adapter.MainGridAdapter;
 import com.example.mini_apps.adapter.MainGridAdapter2;
 import com.example.mini_apps.adapter.MainLinearAdapter;
@@ -70,6 +71,7 @@ public class HomeBlankFragment extends BaseFragment<ImPresenter> implements ImCo
     private LinearLayoutAdapter linearLayoutAdapter;
     private LinearLayoutHelper linearLayoutHelper1;
     private ArrayList<JavaBean.DataDTO.CategoryListDTO> categoryListDTOS;
+    private LinearsLayoutAdapter linearsLayoutAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -149,7 +151,7 @@ public class HomeBlankFragment extends BaseFragment<ImPresenter> implements ImCo
 
         linearLayoutHelper1 = new LinearLayoutHelper();
         categoryListDTOS = new ArrayList<>();
-        new LinearsLayoutAdapter();
+        linearsLayoutAdapter = new LinearsLayoutAdapter(getActivity(),linearLayoutHelper1,categoryListDTOS);
 
 
         DelegateAdapter delegateAdapter = new DelegateAdapter(virtualLayoutManager);
@@ -164,6 +166,7 @@ public class HomeBlankFragment extends BaseFragment<ImPresenter> implements ImCo
         delegateAdapter.addAdapter(mainLinearAdapter);
         delegateAdapter.addAdapter(mainSingleAdapter4);
         delegateAdapter.addAdapter(linearLayoutAdapter);
+        delegateAdapter.addAdapter(linearsLayoutAdapter);
 
         mRecycler.setLayoutManager(virtualLayoutManager);
         mRecycler.setAdapter(delegateAdapter);
@@ -210,6 +213,10 @@ public class HomeBlankFragment extends BaseFragment<ImPresenter> implements ImCo
         List<JavaBean.DataDTO.TopicListDTO> topicList = i.getData().getTopicList();
         topicListDTOS.addAll(topicList);
         linearLayoutAdapter.notifyDataSetChanged();
+
+        List<JavaBean.DataDTO.CategoryListDTO> categoryList = i.getData().getCategoryList();
+        categoryListDTOS.addAll(categoryList);
+        linearsLayoutAdapter.notifyDataSetChanged();
 
     }
 
