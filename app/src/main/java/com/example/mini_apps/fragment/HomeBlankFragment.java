@@ -149,9 +149,9 @@ public class HomeBlankFragment extends BaseFragment<ImPresenter> implements ImCo
         topicListDTOS = new ArrayList<>();
         linearLayoutAdapter = new LinearLayoutAdapter(getActivity(),linearLayoutHelper,topicListDTOS);
 
-        linearLayoutHelper1 = new LinearLayoutHelper();
-        categoryListDTOS = new ArrayList<>();
-        linearsLayoutAdapter = new LinearsLayoutAdapter(getActivity(),linearLayoutHelper1,categoryListDTOS);
+//        linearLayoutHelper1 = new LinearLayoutHelper();
+//        categoryListDTOS = new ArrayList<>();
+//        linearsLayoutAdapter = new LinearsLayoutAdapter(getActivity(),linearLayoutHelper1,categoryListDTOS);
 
 
         DelegateAdapter delegateAdapter = new DelegateAdapter(virtualLayoutManager);
@@ -166,7 +166,7 @@ public class HomeBlankFragment extends BaseFragment<ImPresenter> implements ImCo
         delegateAdapter.addAdapter(mainLinearAdapter);
         delegateAdapter.addAdapter(mainSingleAdapter4);
         delegateAdapter.addAdapter(linearLayoutAdapter);
-        delegateAdapter.addAdapter(linearsLayoutAdapter);
+//        delegateAdapter.addAdapter(linearsLayoutAdapter);
 
         mRecycler.setLayoutManager(virtualLayoutManager);
         mRecycler.setAdapter(delegateAdapter);
@@ -214,9 +214,9 @@ public class HomeBlankFragment extends BaseFragment<ImPresenter> implements ImCo
         topicListDTOS.addAll(topicList);
         linearLayoutAdapter.notifyDataSetChanged();
 
-        List<JavaBean.DataDTO.CategoryListDTO> categoryList = i.getData().getCategoryList();
-        categoryListDTOS.addAll(categoryList);
-        linearsLayoutAdapter.notifyDataSetChanged();
+//        List<JavaBean.DataDTO.CategoryListDTO> categoryList = i.getData().getCategoryList();
+//        categoryListDTOS.addAll(categoryList);
+//        linearsLayoutAdapter.notifyDataSetChanged();
 
     }
 
